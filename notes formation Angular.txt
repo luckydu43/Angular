@@ -4,3 +4,8 @@ npm gère les dépendances du projet JS comme Maven
 npm init pour initialiser un projet
 npm install jquery (ou même bootstrap) pour ajouter ça au projet
 
+JS 
+var démilite la portée d'une variable à la fonction où elle a été déclarée
+let délimite la portée d'une variable à la paire d'accolades qui la contient. const aussi mais que pour des constantes
+
+
