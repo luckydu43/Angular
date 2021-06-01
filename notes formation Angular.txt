@@ -1,0 +1,6 @@
+Installer node.js donne npm
+npm gère les dépendances du projet JS comme Maven
+
+npm init pour initialiser un projet
+npm install jquery (ou même bootstrap) pour ajouter ça au projet
+
