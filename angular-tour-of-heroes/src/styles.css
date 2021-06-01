@@ -3,12 +3,19 @@
 h1 {
     color: rgb(222, 75, 241);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 345%;
+    font-size: 335%;    
   }
-  h2, h3 {
-    color: #444;
+  h2 {
+    color: rgb(23, 160, 18);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
+    font-size: 245%;
+  }
+  h3 {
+    color: rgb(14, 27, 14);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 145%;
   }
   body {
     margin: 2em;
@@ -20,4 +27,5 @@ h1 {
   /* everywhere else */
   * {
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
   }

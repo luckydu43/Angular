@@ -18,7 +18,6 @@ JS
 var démilite la portée d'une variable à la fonction où elle a été déclarée
 let délimite la portée d'une variable à la paire d'accolades qui la contient. const aussi mais que pour des constantes
 
-
 Notion de promesse
 Cela permet de faire les traitements asynchrones du JS en le lisant/écrivant à la manière synchrone
 La promesse attend qu'on lui rende une variable resolve ou reject pour renvoyer cette réponse
@@ -26,10 +25,7 @@ En conséquence, on peut agir (comme recevoir une HTTP 200 ou une HTTP 404) à l
 
 async permet de traiter les promesses plus lisiblement qu'avec des then
 
-Promise.all ou .race permet de consommer les ressources de la promesse
-
-AUCUN CONSUMER ne détruit la ressource à la lecture.
-4 consumers peuvent donc accéder aux ressources du même producer
+Promise.all ou .race permet de consommer les ressources de toutes les promesses en paramètre
 
 JS permet d'écrire les fonctions simples sous forme de lambda sans redéfinir la valeur de this
 var add = (a,b) => `${a} + ${b} = ${a+b}`
@@ -43,9 +39,6 @@ Found 1 error.               ~~
 >node greeter.js
 Hello 42
 
-
-
-
 ---------------------------------------
 Angular
 ---------------------------------------
@@ -55,3 +48,18 @@ ng generate component heroes => ajoute un composant. Hyper important.
 
 Tous les composants sont sous "app-root". Il y a donc au moins un composant dans un projet Angular.
 
+On peut changer le prefixe des composants dans Angular.json
+
+{{value | upperscore}} dans un html fonctionne. La value est prise en compte par la fonction upperscore, le html affiche ce que retourne upperscore
+
+[(ngModel)], la banane dans la boite. Cela simplifie les actions entre vue et contrôleur en masquant le binding bi-directionnel. Il est toutefois possible de faire ce binding à la main !
+
+Ceci :
+<input id="nom" [(ngModel)]="hero1.nom" placeholder="nom">
+est strictement égal à :
+
+<input [value]="hero1.nom" (keyup)="onKeyup($event)" placeholder="nom">
+avec ceci dans le component.ts :
+onKeyup(e:any) {
+    this.hero1.nom = e.target.value
+}
