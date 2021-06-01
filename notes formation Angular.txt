@@ -32,6 +32,9 @@ AUCUN CONSUMER ne détruit la ressource à la lecture.
 4 consumers peuvent donc accéder aux ressources du même producer
 
 JS permet d'écrire les fonctions simples sous forme de lambda sans redéfinir la valeur de this
+var add = (a,b) => `${a} + ${b} = ${a+b}`
+var afficher = (...values) => console.log(values)
+
 
 
 

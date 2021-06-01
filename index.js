@@ -58,3 +58,15 @@ var add = (a,b) => `${a} + ${b} = ${a+b}`
 
 console.log(add(5,7))
 
+let arr = [10,20,30]
+let [a,b,...lereste] = arr
+
+var afficher = (...values) => console.log(values)
+afficher(a,b,...lereste)
+
+const o = {nom:"luckydu43", skill:"noob", money:"enough"}
+afficher(o)
+const {nom,...touto} = o
+afficher(nom)
+afficher(touto)
+
