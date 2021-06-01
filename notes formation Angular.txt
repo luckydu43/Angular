@@ -41,7 +41,6 @@ greeter.ts:10:27 - error TS2345: Argument of type 'number' is not assignable to 
 10 let hellonumber = greeter(42);
 Found 1 error.               ~~
 >node greeter.js
-Hello luckydu43
 Hello 42
 
 
@@ -52,3 +51,7 @@ Angular
 ---------------------------------------
 ng new angular-tour-of-heroes => crée un répertoire, y met le code et les dépendances
 ng serve --open => lance l'appli sur localhost:4200
+ng generate component heroes => ajoute un composant. Hyper important.
+
+Tous les composants sont sous "app-root". Il y a donc au moins un composant dans un projet Angular.
+
