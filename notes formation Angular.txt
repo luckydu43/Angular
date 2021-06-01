@@ -39,9 +39,7 @@ On peut transcrire du ts en js, en ayant du js exploitable même si ts lève des
 >tsc greeter.ts
 greeter.ts:10:27 - error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
 10 let hellonumber = greeter(42);
-                             ~~
-Found 1 error.
-
+Found 1 error.               ~~
 >node greeter.js
 Hello luckydu43
 Hello 42
@@ -49,3 +47,8 @@ Hello 42
 
 
 
+---------------------------------------
+Angular
+---------------------------------------
+ng new angular-tour-of-heroes => crée un répertoire, y met le code et les dépendances
+ng serve --open => lance l'appli sur localhost:4200
