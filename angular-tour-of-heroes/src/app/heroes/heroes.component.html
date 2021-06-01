@@ -18,8 +18,28 @@
 </div>
 
 <h2>My Heroes</h2>
-<ul class="heroes">
-    <li *ngFor="let hero of heroes">
+
+<div *ngIf="selectedHero">
+    <h3>
+        Détails du héros {{selectedHero.nom | uppercase}}
+        <div><span>ID du héros : </span>{{selectedHero.id}}</div>
+        <div>
+            <label for="hero-name">Nom du héros : </label>
+            <input id="hero-name" [(ngModel)]="selectedHero.nom" placeholder="name">
+        </div>
+        <div>
+            <label for="hero-skill">Skill du héros : </label>
+            <input id="hero-skill" [(ngModel)]="selectedHero.skill" placeholder="name">
+        </div>
+        <br>
+    </h3>
+</div>
+
+<ul class=heroes>
+    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+        <!-- 
+        *ngFor déclare une boucle for, c'est une directive structurelle
+        let hero of heroes est une syntaxe JS.-->
         <span class="badge">{{hero.id}}</span> {{hero.nom}}
         <span> {{hero.skill}} </span>
     </li>
