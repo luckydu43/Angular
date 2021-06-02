@@ -23,13 +23,11 @@ export class HeroService {
     )
   }
   getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find(h => h.id === id)!;
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`${hero.nom} a été sélectionné`)),
+      tap(hero => this.log(`${hero.nom} a été sélectionné`)),
       catchError(this.handleError<Hero>(`erreur durant la sélection du héros avec l'ID ${id}`))
     );
-    return of(hero);
   }
 
   private heroesUrl = 'api/heroes';  // URL to web api
@@ -73,7 +71,6 @@ export class HeroService {
 
   /** POST: add a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
-    hero.skill = hero.nom;
     return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
       tap((newHero: Hero) => this.log(`Création réussie d\'un heros avec l'ID ${newHero.id}`)),
       catchError(this.handleError<Hero>('Erreur lors de l\'enregistrement d\'un héros'))

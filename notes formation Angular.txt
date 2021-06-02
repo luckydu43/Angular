@@ -70,3 +70,10 @@ Pour partager une valeur d'une page à une autre :
 .ts cible : @Input() hero?: Hero;
 
 20 opérateurs en 20 minutes ngconf
+
++--------+                   +-----------+
+|  toto  |  ---------------> |  subject  |
++--------+       next()      +-----------+    
+On écoute le subject et non le toto initial, c'est la programmation réactive
+
+switchMap permet de changer d'observer. On part de l'Observable initial puis on change d'Observable pour recevoir la vraie data associée attendue, celle saisie par l'user ou retournée par une bdd. Il n'y a même pas de subscribe
