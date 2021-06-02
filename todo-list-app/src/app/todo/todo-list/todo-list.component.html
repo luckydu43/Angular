@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>#</th>
+        <th>Titre</th>
+        <th>Complété</th>
+        <th>Date d'expiration</th>
+    </tr>
+    <tr *ngFor="let todo of todos$ | async">
+        <td>{{todo.id}}</td>
+        <td>{{todo.title}}</td>
+        <td><input type="checkbox" [(ngModel)]="todo.completed"></td>
+        <td>{{todo.dueDate | date : 'dd/MM/yy'}}</td>
+    </tr>
+</table>

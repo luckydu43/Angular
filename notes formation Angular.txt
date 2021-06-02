@@ -31,6 +31,7 @@ JS permet d'écrire les fonctions simples sous forme de lambda sans redéfinir l
 var add = (a,b) => `${a} + ${b} = ${a+b}`
 var afficher = (...values) => console.log(values)
 
+https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html
 On peut transcrire du ts en js, en ayant du js exploitable même si ts lève des erreurs
 >tsc greeter.ts
 greeter.ts:10:27 - error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
@@ -81,3 +82,30 @@ Lorsqu'une variable contient un Observable, son nom doit être suffixé par un $
 
 | async permet de ne pas écrire un subscribe pour obtenir la donnée, ce qui est plus propre.
 Les subscribe sont ne obligation pour gérer un Observable mais, s'ils doivent rester concis, les faire disparaître du code est plus propre.
+
+----------------------------
+TP en full autonomie
+----------------------------
+https://material.angular.io/components/table/api
++----------------------------+
+| npx json-server todos.json | permet d'exécuter un serveur simulant une bdd +----------------------------+ causant en HTTP à partir d'un fichier todos.json 
+                               (ou autre) rempli de donnée brute
++----------------------+
+| ng new todo-list-app | pour créer l'app
++----------------------+
++--------------------------+
+| ng add @angular/material | pour ajouter Material à Angular
++--------------------------+
+							indigo/pink est pas mal
+							oui à tout
++----------+
+| ng serve | pour déployer (--open)
++----------+
++------------------+
+| ng g module todo | Création d'un module dans son propre répertoire
++------------------+
++-----------------------+
+| ng g c todo\todo-list | Création d'un componant dans son propre répertoire
++-----------------------+
+
+Les composants et directives comme FormsModule (pour ngModel) doit être importé par le module qui en a besoin, et non pas par son module parent.
