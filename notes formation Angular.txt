@@ -67,3 +67,5 @@ onKeyup(e:any) {
 Pour partager une valeur d'une page à une autre :
 .html source : <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 .ts cible : @Input() hero?: Hero;
+
+20 opérateurs en 20 minutes ngconf

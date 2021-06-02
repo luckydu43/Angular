@@ -5,6 +5,7 @@
 <div>
     <h3>skill {{windstorm.skill}}</h3>
 </div>
+
 <div>
     <label for="nom">Nom du héros : </label>
     <input id="nom" [(ngModel)]="windstorm.nom" placeholder="nom">
@@ -20,13 +21,18 @@
 <h2>Liste des héros</h2>
 
 <ul class=heroes>
-    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+    <!--<li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">-->
+    <li *ngFor="let hero of heroes">
         <!-- 
         *ngFor déclare une boucle for, c'est une directive structurelle
         let hero of heroes est une syntaxe JS.-->
-        <span class="badge">{{hero.id}}</span> {{hero.nom}}
-        <span> {{hero.skill}} </span>
+        <!--<span class="badge">{{hero.id}}</span> {{hero.nom}}
+        <span> {{hero.skill}} </span>-->
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.nom}}
+          </a>
     </li>
 </ul>
 
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+<app-hero-detail></app-hero-detail>
