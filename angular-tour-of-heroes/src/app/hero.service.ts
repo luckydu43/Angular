@@ -67,7 +67,7 @@ export class HeroService {
       tap(_ => this.log(`Le héros ${hero.nom} a bien été mis à jour`)),
       catchError(this.handleError<any>('updateHero'))
     );
-  }  
+  }
 
   /** POST: add a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
@@ -78,12 +78,26 @@ export class HeroService {
   }
 
   /** DELETE: delete the hero from the server */
-deleteHero(id: number): Observable<Hero> {
-  const url = `${this.heroesUrl}/${id}`;
+  deleteHero(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/${id}`;
 
-  return this.http.delete<Hero>(url, this.httpOptions).pipe(
-    tap(_ => this.log(`Le héros avec l\'ID ${id} a bien été supprimé`)),
-    catchError(this.handleError<Hero>(`Erreur lors de la suppression du héros avec l\'ID ${id}`))
-  );
-}
+    return this.http.delete<Hero>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`Le héros avec l\'ID ${id} a bien été supprimé`)),
+      catchError(this.handleError<Hero>(`Erreur lors de la suppression du héros avec l\'ID ${id}`))
+    );
+  }
+
+  /* GET heroes whose name contains search term */
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?nom=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`Il y a des héros contenant "${term}"`) :
+        this.log(`Aucun héros ne contient "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  }
 }

@@ -77,3 +77,7 @@ Pour partager une valeur d'une page à une autre :
 On écoute le subject et non le toto initial, c'est la programmation réactive
 
 switchMap permet de changer d'observer. On part de l'Observable initial puis on change d'Observable pour recevoir la vraie data associée attendue, celle saisie par l'user ou retournée par une bdd. Il n'y a même pas de subscribe
+Lorsqu'une variable contient un Observable, son nom doit être suffixé par un $ pour faciliter la lecture. On peut soit la subscriber, soit modifier ses paramètres.
+
+| async permet de ne pas écrire un subscribe pour obtenir la donnée, ce qui est plus propre.
+Les subscribe sont ne obligation pour gérer un Observable mais, s'ils doivent rester concis, les faire disparaître du code est plus propre.
