@@ -29,10 +29,22 @@
         <!--<span class="badge">{{hero.id}}</span> {{hero.nom}}
         <span> {{hero.skill}} </span>-->
         <a routerLink="/detail/{{hero.id}}">
-            <span class="badge">{{hero.id}}</span> {{hero.nom}}
-          </a>
+            <span class="badge">{{hero.id}}</span>
+            <span class="badge2">{{hero.nom}}</span>
+            <span class="badge2">{{hero.skill}}</span>
+        </a>
+        <button class="delete" title="Supprimer" (click)="delete(hero)">x</button>
     </li>
 </ul>
+
+<div>
+    <label for="new-hero">Nom : </label>
+    <input id="new-hero" #heroNom />
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="add-button" (click)="add(heroNom.value); heroNom.value=''">
+        Ajouter un héros
+    </button>
+</div>
 
 <!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
 <app-hero-detail></app-hero-detail>

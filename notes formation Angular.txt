@@ -42,6 +42,7 @@ Hello 42
 ---------------------------------------
 Angular
 ---------------------------------------
+https://angular.io/tutorial
 ng new angular-tour-of-heroes => crée un répertoire, y met le code et les dépendances
 ng serve --open => lance l'appli sur localhost:4200
 ng generate component heroes => ajoute un composant. Hyper important.
