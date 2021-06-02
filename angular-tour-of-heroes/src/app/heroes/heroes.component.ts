@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HEROES } from './mock-heroes';
+import { HeroService } from '../hero.service'
 
 @Component({
   selector: 'app-heroes',
@@ -9,21 +10,24 @@ import { HEROES } from './mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES;
+  //heroes = HEROES;
+  heroes: Hero[] = [];
+  
 
-  hero1: Hero = {
+  windstorm: Hero = {
     id: 1,
     nom: 'Windstorm',
     skill: 'moyen mais a du potentiel'
   };
 
-  constructor() { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.heroes = this.heroService.getHeroes();
   }
 
   onKeyup(e: any) {
-    this.hero1.nom = e.target.value
+    this.windstorm.nom = e.target.value
   }
 
   selectedHero?: Hero;

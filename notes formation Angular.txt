@@ -63,3 +63,7 @@ avec ceci dans le component.ts :
 onKeyup(e:any) {
     this.hero1.nom = e.target.value
 }
+
+Pour partager une valeur d'une page à une autre :
+.html source : <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+.ts cible : @Input() hero?: Hero;

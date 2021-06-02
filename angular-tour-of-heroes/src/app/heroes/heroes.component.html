@@ -1,39 +1,23 @@
-<h2>Détails de {{hero1.nom | uppercase}} : </h2>
+<h2>Détails de {{windstorm.nom | uppercase}} : </h2>
 <div>
-    <h3>id = {{hero1.id}}</h3>
+    <h3>id = {{windstorm.id}}</h3>
 </div>
 <div>
-    <h3>skill {{hero1.skill}}</h3>
-</div>
-<div>
-    <label for="nom">Nom du héros : </label>
-    <input id="nom" [(ngModel)]="hero1.nom" placeholder="nom">
+    <h3>skill {{windstorm.skill}}</h3>
 </div>
 <div>
     <label for="nom">Nom du héros : </label>
-    <input [value]="hero1.nom" (keyup)="onKeyup($event)" placeholder="nom">
+    <input id="nom" [(ngModel)]="windstorm.nom" placeholder="nom">
 </div>
 <div>
-    <p [innerHTML]="hero1.nom"></p>
+    <label for="nom">Nom du héros : </label>
+    <input [value]="windstorm.nom" (keyup)="onKeyup($event)" placeholder="nom">
+</div>
+<div>
+    <p [innerHTML]="windstorm.nom"></p>
 </div>
 
-<h2>My Heroes</h2>
-
-<div *ngIf="selectedHero">
-    <h3>
-        Détails du héros {{selectedHero.nom | uppercase}}
-        <div><span>ID du héros : </span>{{selectedHero.id}}</div>
-        <div>
-            <label for="hero-name">Nom du héros : </label>
-            <input id="hero-name" [(ngModel)]="selectedHero.nom" placeholder="name">
-        </div>
-        <div>
-            <label for="hero-skill">Skill du héros : </label>
-            <input id="hero-skill" [(ngModel)]="selectedHero.skill" placeholder="name">
-        </div>
-        <br>
-    </h3>
-</div>
+<h2>Liste des héros</h2>
 
 <ul class=heroes>
     <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
@@ -44,3 +28,5 @@
         <span> {{hero.skill}} </span>
     </li>
 </ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

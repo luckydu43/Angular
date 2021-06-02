@@ -4,6 +4,7 @@
     list-style-type: none;
     padding: 0;
     width: 40em;
+
   }
   .heroes li {
     cursor: pointer;
