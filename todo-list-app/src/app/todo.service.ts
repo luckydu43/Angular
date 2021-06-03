@@ -14,4 +14,9 @@ export class TodoService {
   findAll(): Observable<Todo[]> {
     return this.http.get<Todo[]>(environment.urlTodos);
   }
+
+  delete(todo:Todo): Observable<any> {
+    const url = `${environment.urlTodos}/${todo.id}`
+    return this.http.delete<Todo>(url);
+  }
 }

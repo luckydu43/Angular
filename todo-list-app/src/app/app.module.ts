@@ -16,7 +16,6 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     TodoModule,
-    MatTableModule,
     HttpClientModule
   ],
   providers: [],

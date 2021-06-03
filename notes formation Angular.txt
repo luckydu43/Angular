@@ -109,3 +109,5 @@ https://material.angular.io/components/table/api
 +-----------------------+
 
 Les composants et directives comme FormsModule (pour ngModel) doit être importé par le module qui en a besoin, et non pas par son module parent.
+
+Avec Material, on déclare toutes les colonnes dans le html mais le tableau displayedColumns donne ce qui est affiché ou non.
