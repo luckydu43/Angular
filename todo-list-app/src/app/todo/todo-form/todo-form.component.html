@@ -1,7 +1,7 @@
-<form (ngSubmit)="saveTodo()">
+<form (ngSubmit)="saveTodo()" #theForm="ngForm">
     <mat-form-field appearance="fill" >
         <mat-label>Titre</mat-label>
-        <textarea matInput [(ngModel)]="todoForm.title" name="titre"></textarea>
+        <textarea matInput [(ngModel)]="todoForm.title" name="titre" #titreDutheForm="ngModel"></textarea>
     </mat-form-field>
     <mat-checkbox [(ngModel)]="todoForm.completed" name="choix">{{todoForm.completed}}</mat-checkbox>
     <mat-form-field appearance="fill">
@@ -10,7 +10,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <button mat-mini-fab color="primary" type="submit" aria-label="Enregistrer">
+    <button mat-mini-fab color="primary" type="submit" aria-label="Enregistrer" [disabled]="theForm.invalid">
         <mat-icon>backup</mat-icon>
     </button>
 </form>

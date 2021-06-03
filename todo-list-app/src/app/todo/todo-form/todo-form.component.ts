@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Action } from 'src/app/action';
+import { BusService } from 'src/app/bus.service';
 import { TodoService } from 'src/app/todo.service';
 import { Todo } from '../todo';
 
@@ -9,19 +11,26 @@ import { Todo } from '../todo';
 })
 export class TodoFormComponent implements OnInit {
 
-  todoForm:Todo={
-    title:"Titre",
-    dueDate:0,
-    completed:false,
+  todoForm: Todo = {
+    title: "Titre",
+    dueDate: 0,
+    completed: false,
   }
 
-  constructor(private todoService:TodoService) { }
+  constructor(private todoService: TodoService, private bus: BusService) { }
 
   ngOnInit(): void {
   }
 
   saveTodo() {
-    this.todoService.save(this.todoForm).subscribe()
+    const todo_save: Todo = {
+      ...this.todoForm, dueDate: new Date(this.todoForm.dueDate).getTime()
+    }
+    this.todoService.save(todo_save).subscribe(() => {
+      const a: Action = { type: "NEW_TODO" }
+      console.log("envoi d'un nouveau TODO dans la queue")
+      this.bus.dispatch(a)
+    })
   }
 
 }

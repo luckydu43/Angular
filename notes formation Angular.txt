@@ -113,3 +113,17 @@ Les composants et directives comme FormsModule (pour ngModel) doit être import�
 Avec Material, on déclare toutes les colonnes dans le html mais le tableau displayedColumns donne ce qui est affiché ou non.
 
 Modules pour VSCode : Angular snippets, debugger for firefox, ES7 react/redux
+
+pose volets roulants solaires
+
+Il faut étudier le cycle de vie des composants Angular
+La première méthode appelée est ngonchange()
+https://angular.io/guide/lifecycle-hooks
+Communication entre composants hiérarchiques : https://angular.io/guide/component-interaction#parent-and-children-communicate-using-a-service
+
+Messaging intégré à Angular par 'rxjs', c'est la classe Subject qui propose des méthodes simples pour pousser un message et se mettre en attente
+
+pipe() permet d'utiliser des opérateurs comme filter qui permet de filtrer l'abonnement à un subscribe() à des données spécifiques afin de ne pas réagir à chaque message passé dans le bus
+
+
+
