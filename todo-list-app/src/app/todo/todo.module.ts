@@ -4,10 +4,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoReactiveFormComponent } from './todo-reactive-form/todo-reactive-form.component';
 import { FormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon'; 
+import { MaterialModule } from './material.module';
 
 
 
@@ -20,10 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     CommonModule,
     FormsModule,
-    MatTableModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule
+    MaterialModule,
   ],
   exports: [
     TodoListComponent,

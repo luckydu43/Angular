@@ -9,13 +9,14 @@ import { Todo } from './todo/todo';
 })
 export class TodoService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   findAll(): Observable<Todo[]> {
     return this.http.get<Todo[]>(environment.urlTodos);
+
   }
 
-  delete(todo:Todo): Observable<any> {
+  delete(todo: Todo): Observable<any> {
     const url = `${environment.urlTodos}/${todo.id}`
     return this.http.delete<Todo>(url);
   }
