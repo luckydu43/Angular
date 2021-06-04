@@ -16,16 +16,19 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<Todo[]> {
+    console.log("Envoi de la liste des TODOs")
     return this.http.get<Todo[]>(environment.urlTodos);
 
   }
 
   delete(todo: Todo): Observable<any> {
+    console.log("Suppression d'un TODO")
     const url = `${environment.urlTodos}/${todo.id}`
     return this.http.delete<Todo>(url);
   }
 
   save(todo: Todo): Observable<any> {
+    console.log("Enregistrement d'un TODO")
     return this.http.post<any>(environment.urlTodos, todo, this.httpOptions);
   }
 }

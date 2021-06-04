@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Action } from 'src/app/action';
 import { BusService } from 'src/app/bus.service';
 import { TodoService } from 'src/app/todo.service';
+import { TypeAction } from 'src/app/type-action';
 import { Todo } from '../todo';
 
 @Component({
@@ -27,7 +28,7 @@ export class TodoFormComponent implements OnInit {
       ...this.todoForm, dueDate: new Date(this.todoForm.dueDate).getTime()
     }
     this.todoService.save(todo_save).subscribe(() => {
-      const a: Action = { type: "NEW_TODO" }
+      const a: Action = { type: TypeAction.newTodo }
       console.log("envoi d'un nouveau TODO dans la queue")
       this.bus.dispatch(a)
     })

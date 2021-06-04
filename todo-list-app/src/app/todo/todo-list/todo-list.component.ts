@@ -5,6 +5,7 @@ import { BusService } from 'src/app/bus.service';
 import { TodoService } from 'src/app/todo.service';
 import { Todo } from '../todo';
 import { Action } from '../../action';
+import { TypeAction } from 'src/app/type-action';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,9 +21,9 @@ export class TodoListComponent implements OnInit {
 
   constructor(private todoService: TodoService, private bus: BusService) {
     this.bus.bus$
-      .pipe(filter(action => action.type === "NEW_TODO"))
+      .pipe(filter(action => action.type === TypeAction.newTodo || action.type === TypeAction.deleteTodo))
       .subscribe((action: Action) => {
-        console.log("TodoListComponent a reçu une action", action)
+        console.log("TodoListComponent a reçu l'action de recharger la liste", action)
         this.todos$ = this.getTodos();
       })
   }
@@ -38,6 +39,11 @@ export class TodoListComponent implements OnInit {
   }
 
   doDelete(todo: Todo): void {
-    this.todos$ = this.todoService.delete(todo).pipe(switchMap(() => this.todoService.findAll()));
+    //this.todos$ = this.todoService.delete(todo).pipe(switchMap(() => this.todoService.findAll()));
+    this.todoService.delete(todo).subscribe(() => {
+      const a: Action = { type: TypeAction.deleteTodo }
+      console.log("envoi de la notification de suppression d'un TODO dans la queue")
+      this.bus.dispatch(a)
+    })
   }
 }
