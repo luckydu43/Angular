@@ -148,3 +148,9 @@ ng add @ngrx/effects@latest
 ng g module todo
 ng g c todo/todo-list
 
+
+
+-----------------------------------------------------------
+Pour éxécuter les tests d'un projet Angular avec Yasmine :
+ng test
+-----------------------------------------------------------
