@@ -22,7 +22,7 @@ export class TodoService {
   }
 
   delete(todo: Todo): Observable<any> {
-    console.log("Suppression d'un TODO")
+    console.log(`Suppression du TODO d'ID ${todo.id}`)
     const url = `${environment.urlTodos}/${todo.id}`
     return this.http.delete<Todo>(url);
   }

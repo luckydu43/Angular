@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { merge, Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators'
 import { BusService } from 'src/app/bus.service';
 import { TodoService } from 'src/app/todo.service';
@@ -15,35 +15,35 @@ import { TypeAction } from 'src/app/type-action';
 export class TodoListComponent implements OnInit {
 
   todos$!: Observable<Todo[]>
-  isLoading = true;
+  isLoading = false;
 
   displayedColumns: string[] = ['id', 'title', "completed", "dueDate", "colSupprimer"];
 
   constructor(private todoService: TodoService, private bus: BusService) {
-    this.bus.bus$
-      .pipe(filter(action => action.type === TypeAction.newTodo || action.type === TypeAction.deleteTodo))
-      .subscribe((action: Action) => {
-        console.log("TodoListComponent a reçu l'action de recharger la liste", action)
-        this.todos$ = this.getTodos();
-      })
+    console.log("constructeur")
+
+    const load$ = this.bus.bus$.pipe(filter(action => action.type === TypeAction.loadTodos))
+    const new$ = this.bus.bus$.pipe(filter(action => action.type === TypeAction.newTodo),
+      switchMap((action: Action) => this.todoService.save(action.payload as Todo)))
+    const delete$ = this.bus.bus$.pipe(
+      filter(action => action.type === TypeAction.deleteTodo),
+      switchMap((action: Action) => this.todoService.delete(action.payload as Todo))
+    )
+    this.todos$ = merge(new$, load$, delete$).pipe(switchMap(() => this.todoService.findAll()))
   }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    this.todos$ = this.getTodos();
-    this.isLoading = false;
   }
 
-  getTodos(): Observable<Todo[]> {
-    return this.todoService.findAll();
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit")
+    this.bus.dispatch({ type: TypeAction.loadTodos })
   }
 
   doDelete(todo: Todo): void {
     //this.todos$ = this.todoService.delete(todo).pipe(switchMap(() => this.todoService.findAll()));
-    this.todoService.delete(todo).subscribe(() => {
-      const a: Action = { type: TypeAction.deleteTodo }
-      console.log("envoi de la notification de suppression d'un TODO dans la queue")
-      this.bus.dispatch(a)
-    })
+    const a: Action = { type: TypeAction.deleteTodo, payload: todo }
+    console.log("envoi de la notification de suppression d'un TODO dans la queue")
+    this.bus.dispatch(a)
   }
 }

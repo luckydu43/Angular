@@ -27,11 +27,9 @@ export class TodoFormComponent implements OnInit {
     const todo_save: Todo = {
       ...this.todoForm, dueDate: new Date(this.todoForm.dueDate).getTime()
     }
-    this.todoService.save(todo_save).subscribe(() => {
-      const a: Action = { type: TypeAction.newTodo }
-      console.log("envoi d'un nouveau TODO dans la queue")
-      this.bus.dispatch(a)
-    })
+    const a: Action = { type: TypeAction.newTodo, payload: todo_save }
+    console.log("envoi d'un nouveau TODO dans la queue")
+    this.bus.dispatch(a)
   }
 
 }
