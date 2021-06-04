@@ -125,3 +125,4 @@ Messaging intégré à Angular par 'rxjs', c'est la classe Subject qui propose d
 
 pipe() permet d'utiliser des opérateurs comme filter qui permet de filtrer l'abonnement à un subscribe() à des données spécifiques afin de ne pas réagir à chaque message passé dans le bus
 
+s'abonner sur le fil twitter de john papa pour suivre ce qui se fait sur Angular
